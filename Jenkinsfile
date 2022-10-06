@@ -17,7 +17,7 @@ pipeline{
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "repository-jenkins-demo"
         // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "nexus-credentials"
+        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
         NEXUS_SCRIPT = "maven-create-hosted"
     }
 
@@ -43,7 +43,7 @@ pipeline{
             steps{
                 script {
                     // If you are using Windows then you should use "bat" step
-                    sh "mvn package -DskipTests=False"
+                    sh "mvn package -DskipTests=false"
                 }
             }
         }
@@ -72,8 +72,8 @@ pipeline{
                             nexusversion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
-                            groupId: pom.groupId,
-                            version: pom.version,
+                            groupId: "${pom.groupId}",
+                            version: "${pom.version}",
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
