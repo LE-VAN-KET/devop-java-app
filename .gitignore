@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 # Log file
 *.log
 
@@ -11,6 +16,7 @@
 .mtj.tmp/
 
 .idea/
+.vscode/
 
 # Package Files #
 *.jar
